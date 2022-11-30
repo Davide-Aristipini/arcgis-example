@@ -1,0 +1,106 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <title>
+      GeometryEngine - geodesic buffers | Sample | ArcGIS API for JavaScript
+      4.25
+    </title>
+
+    <style>
+      html,
+      body {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+      }
+
+      .viewDivBase {
+        padding: 0;
+        margin: 0;
+        height: 49.9%;
+        width: 49.9%;
+      }
+
+      #view1 {
+        float: left;
+        float: top;
+      }
+
+      #view2 {
+        float: right;
+        float: top;
+      }
+      
+      #view3 {
+        float: left;
+        float: bottom;
+      }
+      
+      #view4 {
+        float: right;
+        float: bottom;
+      }
+
+    </style>
+
+    <link
+      rel="stylesheet"
+      href="https://js.arcgis.com/4.25/esri/themes/light/main.css"
+    />
+    <script src="https://js.arcgis.com/4.25/"></script>
+
+    <script>
+      require([
+        "esri/Map",
+        "esri/views/SceneView",
+        "esri/views/MapView",
+        "esri/layers/GraphicsLayer",
+        "esri/Graphic",
+        "esri/geometry/geometryEngine"
+      ], (Map, SceneView, MapView, GraphicsLayer, Graphic, geometryEngine) => {
+        // Create a 2D MapView and a 3D SceneView
+        // each referencing the same map with two
+        // graphics layers
+
+        const map = new Map({
+          basemap: "satellite"
+        });
+
+
+        const viewOptions = {
+          map: map,
+          zoom: 4,
+          center: [0, 60]
+        };
+        const viewOptions2 = {
+          map: map,
+          zoom: 5,
+          center: [15, 40]
+        };
+
+        const view1 = new MapView(viewOptions);
+        view1.container = "view1";
+
+        const view2 = new MapView(viewOptions);
+        view2.container = "view2";
+
+        const view3 = new MapView(viewOptions);
+        view3.container = "view3";
+        
+        const view4 = new MapView(viewOptions);
+        view4.container = "view4";
+      });
+    </script>
+  </head>
+
+  <body>
+    <div class="viewDivBase" id="view1"></div>
+    <div class="viewDivBase" id="view2"></div>
+    <div class="viewDivBase" id="view3"></div>
+    <div class="viewDivBase" id="view4"></div>
+  </body>
+</html>
